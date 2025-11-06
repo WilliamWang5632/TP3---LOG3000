@@ -19,8 +19,8 @@ Fixer et maintenir une application web de calculatrice simple construite avec Fl
 
 ### 1. Cloner le dépôt
 ```bash
-git clone https://github.com/votre-organisation/flask-calculator.git
-cd flask-calculator
+git clone https://github.com/WilliamWang5632/TP3---LOG3000.git
+cd TP3---LOG3000
 ```
 
 ### 2. Créer un environnement virtuel (recommandé)
@@ -38,11 +38,6 @@ source venv/bin/activate
 ```
 
 ### 3. Installer les dépendances
-```bash
-pip install -r requirements.txt
-```
-
-Si `requirements.txt` n'existe pas :
 ```bash
 pip install flask
 ```
