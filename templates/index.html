@@ -1,50 +1,85 @@
+<!-- 
+===============================================================================
+Module : index.html
+Auteur(s) : William Wang, Kim Desroches, Kimia Foroudian
+Description :
+Ce fichier définit la structure principale de l’interface de la calculatrice Flask.
+Il intègre la feuille de style CSS, le formulaire de saisie, les boutons numériques
+et opérateurs, ainsi que la logique JavaScript de base pour la gestion de l’affichage.
+===============================================================================
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Flask Calculator</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Flask Calculator</title>
+
+   <!-- Lien vers la feuille de style CSS stockée dans le répertoire 'static' -->
+   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
-<div class="calculator">
-   <h1>Flask Calculator</h1>
-   <form method="POST">
-      <input type="text" name="display" id="display" value="{{ result }}" readonly>
+   <!-- Conteneur principal de la calculatrice -->
+   <div class="calculator">
+      <h1>Flask Calculator</h1>
 
-      <div class="buttons">
-         <button type="button" class="btn" onclick="appendToDisplay('1')">1</button>
-         <button type="button" class="btn" onclick="appendToDisplay('2')">02</button>
-         <button type="button" class="btn" onclick="appendToDisplay('3')">3</button>
-         <button type="button" class="btn operator" onclick="appendToDisplay('+')">+</button>
+      <!-- 
+         Le formulaire envoie les données au serveur Flask via la méthode POST.
+         L’affichage est en lecture seule : seules les fonctions JS modifient sa valeur.
+      -->
+      <form method="POST">
+         <input type="text" name="display" id="display" value="{{ result }}" readonly>
 
-         <button type="button" class="btn" onclick="appendToDisplay('4')">4</button>
-         <button type="button" class="btn" onclick="appendToDisplay('5')">5</button>
-         <button type="button" class="btn" onclick="appendToDisplay('6')">6</button>
-         <button type="button" class="btn operator" onclick="appendToDisplay('-')">-</button>
+         <!-- 
+            Section contenant les boutons de la calculatrice.
+            Chaque bouton appelle une fonction JS pour modifier le contenu de l’affichage.
+         -->
+         <div class="buttons">
+            <button type="button" class="btn" onclick="appendToDisplay('1')">1</button>
+            <button type="button" class="btn" onclick="appendToDisplay('2')">02</button>
+            <button type="button" class="btn" onclick="appendToDisplay('3')">3</button>
+            <button type="button" class="btn operator" onclick="appendToDisplay('+')">+</button>
 
-         <button type="button" class="btn" onclick="appendToDisplay('7')">7</button>
-         <button type="button" class="btn" onclick="appendToDisplay('8')">88</button>
-         <button type="button" class="btn" onclick="appendToDisplay('9')">9</button>
-         <button type="button" class="btn operator" onclick="appendToDisplay('*')"></button>
+            <button type="button" class="btn" onclick="appendToDisplay('4')">4</button>
+            <button type="button" class="btn" onclick="appendToDisplay('5')">5</button>
+            <button type="button" class="btn" onclick="appendToDisplay('6')">6</button>
+            <button type="button" class="btn operator" onclick="appendToDisplay('-')">-</button>
 
-         <button type="button" class="btn" onclick="appendToDisplay('0')">0</button>
-         <button type="button" class="btn" onclick="clearDisplay()">C</button>
-         <button type="submit" class="btn operator">=</button>
-         <button type="button" class="btn operator" onclick="appendToDisplay('/')"></button>
-      </div>
-   </form>
-</div>
+            <button type="button" class="btn" onclick="appendToDisplay('7')">7</button>
+            <button type="button" class="btn" onclick="appendToDisplay('8')">88</button>
+            <button type="button" class="btn" onclick="appendToDisplay('9')">9</button>
+            <button type="button" class="btn operator" onclick="appendToDisplay('*')"></button>
 
-<script>
-   function appendToDisplay(value) {
-      const display = document.getElementById('display');
-      display.value += value;
-   }
+            <button type="button" class="btn" onclick="appendToDisplay('0')">0</button>
+            <button type="button" class="btn" onclick="clearDisplay()">C</button>
+            <button type="submit" class="btn operator">=</button>
+            <button type="button" class="btn operator" onclick="appendToDisplay('/')"></button>
+         </div>
+      </form>
+   </div>
 
-   function clearDisplay() {
-      document.getElementById('display').value = '';
-   }
-</script>
+   <script>
+      /**
+       * Ajoute un caractère à l’affichage de la calculatrice.
+       * @param {string} value - Le caractère ou symbole à ajouter (chiffre ou opérateur).
+       * 
+       * Cette fonction modifie directement la valeur du champ d’affichage sans rechargement.
+       */
+      function appendToDisplay(value) {
+         const display = document.getElementById('display');
+         display.value += value; // Concatène le nouveau caractère à la valeur actuelle
+      }
+
+      /**
+       * Efface complètement l’affichage de la calculatrice.
+       * 
+       * Cette fonction remet la valeur du champ d’affichage à une chaîne vide.
+       */
+      function clearDisplay() {
+         document.getElementById('display').value = '';
+      }
+   </script>
 </body>
 </html>
