@@ -1,0 +1,24 @@
+# Dépendances pour les tests
+# Installation : pip install -r requirements-test.txt
+
+# Framework de test principal
+pytest==7.4.3
+
+# Extension Flask pour pytest
+pytest-flask==1.3.0
+
+# Couverture de code
+pytest-cov==4.1.0
+
+# Génération de rapports HTML pour la couverture
+coverage[toml]==7.3.2
+
+# Tests de performance (optionnel)
+pytest-benchmark==4.0.0
+
+# Exécution parallèle des tests (optionnel)
+pytest-xdist==3.5.0
+
+# Dépendances de l'application
+Flask==2.3.3
+Werkzeug==2.3.7
