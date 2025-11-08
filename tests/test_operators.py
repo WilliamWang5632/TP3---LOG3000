@@ -133,11 +133,11 @@ class TestMultiplication:
     def test_multiply_floats(self):
         """Test la multiplication de nombres décimaux."""
         result = multiply(2.0, 3.0)  
-        assert result == pytest.approx(6.0)
+        assert result == 6.0
 
     def test_multiply_large_numbers(self):
         """Test la multiplication de grands nombres."""
-        assert multiply(2, 10) == 20  
+        assert multiply(100, 10) == 1000
 
 class TestDivision:
     """Tests pour la fonction divide()."""
