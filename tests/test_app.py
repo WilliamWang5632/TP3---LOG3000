@@ -46,16 +46,16 @@ class TestCalculateFunction:
 
     def test_calculate_subtraction(self):
         """Test le calcul d'une soustraction."""
-        # Rappel : subtract fait b - a
+        # Rappel : subtract doit faire b - a
         assert calculate("3+10") == 13  # Pour tester l'addition d'abord
         result = calculate("3-10")  # 10 - 3 selon l'implémentation actuelle
         assert result == -7  # Car subtract(3,10) = 10-3 = 7, mais l'ordre dans calculate...
 
     def test_calculate_multiplication(self):
         """Test le calcul d'une multiplication."""
-        # Rappel : multiply fait a ** b
+        # Rappel : multiply doit faire a * b
         result = calculate("2*3")
-        assert result == 8  # 2^3 = 8 avec l'implémentation actuelle
+        assert result == 6
 
     def test_calculate_division(self):
         """Test le calcul d'une division."""

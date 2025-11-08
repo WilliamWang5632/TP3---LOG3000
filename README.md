@@ -76,11 +76,11 @@ Si ce n'est pas déjà fait, créez l'environnement virtuel :
 
 **Windows :**
 ```bash
-python -m venv .venv
+python -m venv venv
 ```
 **macOS / Linux :**
 ```bash
-python3 -m venv .venv
+python3 -m venv venv
 ```
 
 ### 2. Activer l'environnement virtuel
@@ -324,7 +324,7 @@ git checkout -b feature/ma-fonctionnalite
 git add .
 
 # Faire un commit avec un message descriptif
-git commit -m "feat: ajouter la fonction racine carrée"
+git commit -m "feat: add a square root function"
 ```
 
 ### 4. Conventions de messages de commit
@@ -342,17 +342,17 @@ Utiliser le format suivant : `<type>: <description>`
 
 **Exemples :**
 ```bash
-git commit -m "feat: ajouter l'opération modulo"
-git commit -m "fix: corriger la division par zéro"
-git commit -m "docs: mettre à jour le guide d'installation"
-git commit -m "test: ajouter des tests pour la multiplication"
+git commit -m "feat: add modulo operation"
+git commit -m "fix: fix division by zero"
+git commit -m "docs: update installation guide"
+git commit -m "test: add tests for multiplication"
 ```
 
 ### 5. Pousser les changements
 
 ```bash
 # Pousser la branche vers GitHub
-git push origin feature/ma-fonctionnalite
+git push origin feature/my-functionality
 ```
 
 ### 6. Créer une Pull Request
@@ -520,7 +520,7 @@ pip install flask
 Pour une installation plus complète incluant les dépendances de test (à venir) :
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements-test.txt
 ```
 
 **Note :** Si le fichier `requirements.txt` n'existe pas encore, créez-le avec le contenu suivant :
