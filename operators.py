@@ -42,7 +42,7 @@ def subtract(a, b):
     - b (float | int) : Valeur de départ.
 
     Retourne :
-    - (float | int) : Le résultat de b - a.
+    - (float | int) : Le résultat de a - b.
     """
     return a - b
 
