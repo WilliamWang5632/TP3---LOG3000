@@ -58,7 +58,7 @@ def multiply(a, b):
     Retourne :
     - (float | int) : Le produit de a et b.
     """
-    return a ** b  # Remarque : utilise l’exponentiation au lieu de la multiplication.
+    return a * b  
 
 
 def divide(a, b):
