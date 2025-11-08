@@ -23,9 +23,9 @@ Exécution :
 import pytest
 from operators import add, subtract, multiply, divide
 
-
 class TestAddition:
     """Tests pour la fonction add()."""
+    # NOTE: La fonction actuelle ne fait pas d'opération de décimaux.
 
     def test_add_positive_numbers(self):
         """Test l'addition de deux nombres positifs."""
@@ -56,84 +56,96 @@ class TestAddition:
     def test_add_large_numbers(self):
         """Test l'addition de grands nombres."""
         assert add(1000000, 2000000) == 3000000
+        
+    def test_add_commutative(self):
+        """L'addition doit être commutative: a + b == b + a."""
+        assert add(5, 3) == add(3, 5)
+        assert add(-1, 2.5) == add(2.5, -1)
 
 
 class TestSubtraction:
     """Tests pour la fonction subtract()."""
+    # NOTE: La fonction actuelle fait b - a, pas a - b
+    # La fonction actuelle ne fait pas d'opération de décimaux.
 
     def test_subtract_positive_numbers(self):
         """Test la soustraction de deux nombres positifs."""
-        # NOTE: La fonction actuelle fait b - a, pas a - b
-        assert subtract(3, 10) == 7  # 10 - 3 = 7
-        assert subtract(5, 20) == 15  # 20 - 5 = 15
+        assert subtract(3, 10) == -7  
+        assert subtract(10,3) == 7
 
     def test_subtract_negative_numbers(self):
         """Test la soustraction de deux nombres négatifs."""
-        assert subtract(-3, -10) == -7  # -10 - (-3) = -7
-        assert subtract(-5, -2) == 3  # -2 - (-5) = 3
+        assert subtract(-3, -10) == 7  # (-3) - (-10) = 7
+        assert subtract(-10, -3) == -7  # (-10) - (-3) = -7
 
     def test_subtract_mixed_signs(self):
         """Test la soustraction avec des signes mixtes."""
-        assert subtract(5, -3) == -8  # -3 - 5 = -8
-        assert subtract(-5, 3) == 8  # 3 - (-5) = 8
+        assert subtract(5, -3) == 8  
+        assert subtract(-5, 3) == -8 
 
     def test_subtract_with_zero(self):
         """Test la soustraction avec zéro."""
-        assert subtract(0, 5) == 5  # 5 - 0 = 5
-        assert subtract(5, 0) == -5  # 0 - 5 = -5
+        assert subtract(0, 5) == -5  
+        assert subtract(5, 0) == 5 
         assert subtract(0, 0) == 0
 
     def test_subtract_floats(self):
         """Test la soustraction de nombres décimaux."""
-        assert subtract(2.5, 10.5) == 8.0  # 10.5 - 2.5 = 8.0
-        assert subtract(0.3, 1.0) == pytest.approx(0.7)
+        assert subtract(2.5, 10.5) == -8.0 
+        assert subtract(0.3, 1.0) == pytest.approx(-0.7)
 
     def test_subtract_result_negative(self):
         """Test quand le résultat est négatif."""
-        assert subtract(10, 3) == -7  # 3 - 10 = -7
+        assert subtract(10, 3) == 7
 
 
 class TestMultiplication:
     """Tests pour la fonction multiply()."""
+     # NOTE: La fonction actuelle fait a ** b (exponentiation), pas a * b
+     # Ces tests échoueront car multiply est implémenté comme exponentiation
+    # La fonction actuelle ne fait pas d'opération de décimaux.
 
     def test_multiply_positive_numbers(self):
         """Test la multiplication de deux nombres positifs."""
-        # NOTE: La fonction actuelle fait a ** b (exponentiation), pas a * b
-        # Ces tests échoueront car multiply est implémenté comme exponentiation
-        assert multiply(2, 3) == 8  # 2^3 = 8 (actuellement)
-        # Pour la multiplication correcte, ça devrait être 6
+        assert multiply(2, 3) == 6
+        assert multiply(3, 2) == 6
 
     def test_multiply_by_zero(self):
         """Test la multiplication par zéro."""
-        assert multiply(0, 5) == 0  # 0^5 = 0
-        assert multiply(5, 0) == 1  # 5^0 = 1 (cas mathématique)
+        assert multiply(0, 5) == 0 
+        assert multiply(5, 0) == 0 
+    
+    def test_multiply_by_zero_zero(self):
+        """Test la multiplication de zéro par zéro."""
+        pytest.mark.xfail(reason="multiply() utilise ** au lieu de *; 0**0 == 1 actuellement")
+        assert multiply(0, 0) == 0
 
     def test_multiply_negative_numbers(self):
         """Test la multiplication de nombres négatifs."""
-        assert multiply(-2, 3) == -8  # (-2)^3 = -8
+        assert multiply(-2, 3) == -6 
+        assert multiply(2, -3) == -6  
 
     def test_multiply_by_one(self):
         """Test la multiplication par 1."""
-        assert multiply(5, 1) == 5  # 5^1 = 5
-        assert multiply(1, 5) == 1  # 1^5 = 1
+        assert multiply(5, 1) == 5  
+        assert multiply(1, 5) == 5  
 
     def test_multiply_floats(self):
         """Test la multiplication de nombres décimaux."""
-        result = multiply(2.0, 3.0)  # 2.0^3.0 = 8.0
-        assert result == pytest.approx(8.0)
+        result = multiply(2.0, 3.0)  
+        assert result == 6.0
 
     def test_multiply_large_numbers(self):
         """Test la multiplication de grands nombres."""
-        # Avec exponentiation, les résultats seront très grands
-        assert multiply(2, 10) == 1024  # 2^10 = 1024
-
+        assert multiply(100, 10) == 1000
 
 class TestDivision:
     """Tests pour la fonction divide()."""
+    # NOTE: La fonction actuelle fait a // b (division entière)
+    # La fonction actuelle ne fait pas d'opération de décimaux.
 
     def test_divide_positive_numbers(self):
         """Test la division de deux nombres positifs."""
-        # NOTE: La fonction actuelle fait a // b (division entière)
         assert divide(10, 2) == 5
         assert divide(20, 4) == 5
 
@@ -207,12 +219,12 @@ class TestKnownBugs:
     @pytest.mark.xfail(reason="multiply() utilise ** au lieu de *")
     def test_multiply_should_be_multiplication_not_exponentiation(self):
         """Ce test devrait passer si multiply faisait vraiment de la multiplication."""
-        assert multiply(3, 4) == 12  # Devrait être 12, pas 81 (3^4)
+        assert multiply(3, 4) == 12 
 
     @pytest.mark.xfail(reason="subtract() fait b-a au lieu de a-b")
     def test_subtract_order_should_be_a_minus_b(self):
         """Ce test devrait passer si subtract faisait a - b."""
-        assert subtract(10, 3) == 7  # Devrait être 10-3=7, pas 3-10=-7
+        assert subtract(10, 3) == 7 
 
     @pytest.mark.xfail(reason="divide() fait // au lieu de /")
     def test_divide_should_be_float_division(self):

@@ -42,9 +42,9 @@ def subtract(a, b):
     - b (float | int) : Valeur de départ.
 
     Retourne :
-    - (float | int) : Le résultat de b - a.
+    - (float | int) : Le résultat de a - b.
     """
-    return b - a
+    return a - b
 
 
 def multiply(a, b):
@@ -58,7 +58,7 @@ def multiply(a, b):
     Retourne :
     - (float | int) : Le produit de a et b.
     """
-    return a ** b  # Remarque : utilise l’exponentiation au lieu de la multiplication.
+    return a * b  
 
 
 def divide(a, b):
