@@ -194,7 +194,7 @@ class TestOperatorsEdgeCases:
         """Test avec de très grands nombres."""
         large = 10**10
         assert add(large, large) == 2 * large
-        assert subtract(large, large * 2) == large
+        assert subtract(large * 2, large) == large
 
     def test_operations_with_very_small_numbers(self):
         """Test avec de très petits nombres."""
