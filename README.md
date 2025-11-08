@@ -71,9 +71,19 @@ pytest==7.4.0
 
 ## Lancement de l'application
 
-### 1. Activer l'environnement virtuel
+### 1. Crée un environnement virtuel
+Si ce n'est pas déjà fait, créez l'environnement virtuel :
 
-Si ce n'est pas déjà fait, activez l'environnement virtuel :
+**Windows :**
+```bash
+python -m venv .venv
+```
+**macOS / Linux :**
+```bash
+python3 -m venv .venv
+```
+
+### 2. Activer l'environnement virtuel
 
 **Windows :**
 ```bash
@@ -85,7 +95,7 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
-### 2. Démarrer le serveur Flask
+### 3. Démarrer le serveur Flask
 
 ```bash
 python app.py
@@ -99,7 +109,7 @@ Vous devriez voir un message similaire à :
  * Running on http://127.0.0.1:5000
 ```
 
-### 3. Accéder à l'application
+### 4. Accéder à l'application
 
 Ouvrez votre navigateur web et accédez à :
 
@@ -313,7 +323,7 @@ git checkout -b feature/ma-fonctionnalite
 # Ajouter les fichiers modifiés
 git add .
 
-# Commiter avec un message descriptif
+# Faire un commit avec un message descriptif
 git commit -m "feat: ajouter la fonction racine carrée"
 ```
 
