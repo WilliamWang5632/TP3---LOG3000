@@ -46,10 +46,10 @@ class TestCalculateFunction:
 
     def test_calculate_subtraction(self):
         """Test le calcul d'une soustraction."""
-        # Rappel : subtract doit faire b - a
+        # Rappel : subtract doit faire a - b
         assert calculate("3+10") == 13  # Pour tester l'addition d'abord
-        result = calculate("3-10")  # 10 - 3 selon l'implémentation actuelle
-        assert result == -7  # Car subtract(3,10) = 10-3 = 7, mais l'ordre dans calculate...
+        result = calculate("3-10") 
+        assert result == -7  # Car 3 - 10 = -7
 
     def test_calculate_multiplication(self):
         """Test le calcul d'une multiplication."""
