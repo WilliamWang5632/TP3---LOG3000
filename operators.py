@@ -24,11 +24,11 @@ def add(a, b):
     Additionne deux nombres.
 
     Paramètres :
-    - a (float | int) : Premier opérande.
-    - b (float | int) : Second opérande.
+    - a (int) : Premier opérande.
+    - b (int) : Second opérande.
 
     Retourne :
-    - (float | int) : La somme des deux valeurs.
+    - (float) : La somme des deux valeurs.
     """
     return a + b
 
@@ -38,11 +38,11 @@ def subtract(a, b):
     Soustrait le premier opérande du second.
 
     Paramètres :
-    - a (float | int) : Valeur à soustraire.
-    - b (float | int) : Valeur de départ.
+    - a (int) : Valeur à soustraire.
+    - b (int) : Valeur de départ.
 
     Retourne :
-    - (float | int) : Le résultat de a - b.
+    - (float) : Le résultat de a - b.
     """
     return a - b
 
@@ -52,11 +52,11 @@ def multiply(a, b):
     Multiplie deux nombres.
 
     Paramètres :
-    - a (float | int) : Premier opérande.
-    - b (float | int) : Second opérande.
+    - a (int) : Premier opérande.
+    - b (int) : Second opérande.
 
     Retourne :
-    - (float | int) : Le produit de a et b.
+    - (float) : Le produit de a et b.
     """
     return a * b  
 
@@ -66,10 +66,10 @@ def divide(a, b):
     Effectue une division entière entre deux nombres.
 
     Paramètres :
-    - a (float | int) : Numérateur.
-    - b (float | int) : Dénominateur.
+    - a (int) : Numérateur.
+    - b (int) : Dénominateur.
 
     Retourne :
-    - (float | int) : Le quotient entier du calcul (a // b).
+    - (float) : Le quotient entier du calcul (a // b).
     """
     return a // b

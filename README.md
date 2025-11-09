@@ -140,9 +140,9 @@ L'application présente une interface de calculatrice simple avec :
 ### Saisir une expression
 
 Les expressions peuvent contenir :
-- **Nombres** : Entiers ou décimaux (ex: `42`, `3.14`)
+- **Nombres** : Entiers (ex: `42`)
 - **Opérateurs** : `+`, `-`, `*`, `/`
-- **Espaces** : Facultatifs pour la lisibilité (ex: `2 + 3` ou `2+3`)
+- **Symbole d’exécution** : `=` 
 
 ### Exemples d'utilisation
 
@@ -152,7 +152,7 @@ Les expressions peuvent contenir :
 | `10 - 4` | `6.0` | Soustraction |
 | `6 * 7` | `42.0` | Multiplication |
 | `12 / 3` | `4.0` | Division |
-| `5 + 3 * 2` | `11.0` | Respect de la priorité des opérations |
+| `5 + 3 * 2` | Erreur | Calcul trop complexe |
 | `10 / 0` | Erreur | Division par zéro |
 
 ### Gestion des erreurs

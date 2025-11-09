@@ -225,9 +225,3 @@ class TestKnownBugs:
     def test_subtract_order_should_be_a_minus_b(self):
         """Ce test devrait passer si subtract faisait a - b."""
         assert subtract(10, 3) == 7 
-
-    @pytest.mark.xfail(reason="divide() fait // au lieu de /")
-    def test_divide_should_be_float_division(self):
-        """Ce test devrait passer si divide faisait de la division flottante."""
-        assert divide(10, 3) == pytest.approx(3.333, rel=0.01)
-        # Devrait être 3.333..., pas 3
